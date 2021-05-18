@@ -1,10 +1,10 @@
 // : import the url check function
 // const validator = require('../src/client/js/urlValidator');
-import {checkURL} from "../js/checkURL"
+import validURL from "../js/checkURL"
 
 describe('Test check url functionality', () => {
     test('Testing the checkUrl function defined or not', () => {
-        expect(checkUrl).toBeDefined()
+        expect(validURL).toBeDefined()
     })
 
     // test("This URL is valid", () => {
@@ -12,10 +12,10 @@ describe('Test check url functionality', () => {
     // });
 
     test('Testing the checkUrl function return false for invalid url', () => {
-        expect(checkUrl('Monaya')).toBe(false)
+        expect(validURL('Monaya')).toBe(false)
     })
 
     test('Testing the checkUrl function return true for valid url', () => {
-        expect(checkUrl('http://example.com')).toBeTruthy()
+        expect(validURL('http://example.com')).toBeTruthy()
     })
 })

@@ -5,11 +5,11 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const axios = require('axios')
-const PORT = 8081
+const PORT = 5001
 
 //  add Configuration to be able to use env variables
 const apiUrl = 'https://api.meaningcloud.com/sentiment-2.1'
-const apiKey = process.env.apiUrl
+const apiKey = process.env.ApiKey
 
 // : Create an instance for the server
 const app = express()
@@ -23,8 +23,8 @@ app.use(bodyParser.json())
 app.use(express.static('dist'))
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html')
+    // res.sendFile(path.resolve('src/client/views/index.html'))
 })
 // a route that handling post request for new URL that coming from the frontend
 /* :

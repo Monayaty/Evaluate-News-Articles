@@ -1,7 +1,7 @@
-import { checkUrl } from './checkURL'
+import validURL from './checkURL'
 
 const postMyDataFun = async (url = '', data = {}) => {
-  const response = await fetch(url, {
+  const res = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
     mode: 'cors',
@@ -11,17 +11,17 @@ const postMyDataFun = async (url = '', data = {}) => {
     body: JSON.stringify(data),
   })
   try {
-      return await response.json()
+      return await res.json()
   } catch (error) {
     console.log(error)
   }
 }
 
 const handleSubmit = async () => {
-  const articleUrl = document.getElementById('article-url').value
-  if (checkURL(articleUrl)) {
-    const myData = await postMyDataFun('http://localhost:8081/add-url', {
-        articleUrl
+  const articleURL = document.getElementById('article-url').value
+  if (validURL(articleURL)) {
+    const myData = await postMyDataFun('http://localhost:5001/add-url', {
+        articleURL
     })
     document.getElementById('text').textContent = myData.text
     document.getElementById('agreement').textContent = myData.agreement
@@ -29,6 +29,7 @@ const handleSubmit = async () => {
     document.getElementById('score_tag').textContent = myData.score_tag
     document.getElementById('subjectivity').textContent = myData.subjectivity
     document.getElementById('irony').textContent = myData.irony
+    console.log(myData)
   } else {
     alert('Enter a valid URL')
   }
