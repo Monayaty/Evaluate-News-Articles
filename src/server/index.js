@@ -9,7 +9,7 @@ const PORT = 5001
 
 //  add Configuration to be able to use env variables
 const apiUrl = 'https://api.meaningcloud.com/sentiment-2.1'
-const apiKey = process.env.ApiKey
+const apiKey = process.env.API_KEY
 
 // : Create an instance for the server
 const app = express()
